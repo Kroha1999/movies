@@ -11,7 +11,7 @@ class MoviesBloc with MoviesMixin {
   final _moviesTop = StreamController<List<MovieItem>>.broadcast();
   final _moviesUp = StreamController<List<MovieItem>>.broadcast();
 
-  //Stream provider
+  //Stream provider of MovieItems list
   get movies => _defineStream;
 
   //function that defines which stream to provide
@@ -25,29 +25,30 @@ class MoviesBloc with MoviesMixin {
   //fetches new movies data
   fetchMovies(MoviesListType type) async {
     if (type == MoviesListType.topMovies) {
-      final List<MovieItem> moviesPage = 
-          await _repository.fetchTopMovies();
-      if(moviesPage == null) return;
+      final List<MovieItem> moviesPage = await _repository.fetchTopMovies();
+      if (moviesPage == null) return;
       _moviesTopList.addAll(moviesPage);
       _moviesTop.sink.add(_moviesTopList);
     } else {
       final List<MovieItem> moviesPage =
           await _repository.fetchUpcomingMovies();
-      if(moviesPage == null) return;
+      if (moviesPage == null) return;
       _moviesUpList.addAll(moviesPage);
       _moviesUp.sink.add(_moviesUpList);
     }
   }
 
-  ///////////////////////////////////////////////////
+  // Streams for fetching data about trailer and actors
   get movieTrailer => _getTrailer;
   get movieActors => _getActors;
 
-  Stream<String> _getTrailer(int id){
+  // Stream transformation in order to get YouTube video id
+  Stream<String> _getTrailer(int id) {
     return _repository.getVideo(id).transform(toTrailer);
   }
 
-  Stream<List> _getActors(int id){
+  // Stream transformation in order to get top 10 actors of curent film
+  Stream<List> _getActors(int id) {
     return _repository.getActors(id).transform(toActors);
   }
 

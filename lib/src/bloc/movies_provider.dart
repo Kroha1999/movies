@@ -8,9 +8,9 @@ class MoviesProvider extends InheritedWidget {
   final MoviesBloc bloc = MoviesBloc();
 
   static MoviesBloc of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(MoviesProvider)as MoviesProvider).bloc;
+    return (context.inheritFromWidgetOfExactType(MoviesProvider) as MoviesProvider).bloc;
   }
 
   @override
-  bool updateShouldNotify(_)=>true;
+  bool updateShouldNotify(_) => true;
 }

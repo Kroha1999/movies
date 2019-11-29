@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 class Actor {
   final String character;
   final String name;
-  final String photoPath;  
+  final String photoPath;
 
-  Actor(this.character,this.name,this.photoPath);
+  Actor(this.character, this.name, this.photoPath);
 }

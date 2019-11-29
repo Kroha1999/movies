@@ -46,7 +46,9 @@ class ActorView extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Padding(padding: const EdgeInsets.only(bottom: 8.0),)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                )
               ],
             ),
           );

@@ -39,17 +39,13 @@ class Repository {
       return null;
   }
 
-  ///////////////////////////////////////////////////////////////////////////
-  Stream getVideo(int id){
-    return _client
-        .get("$_root/$id/videos?api_key=$_key")
-        .asStream();
+  // get trailer for specific movie
+  Stream getVideo(int id) {
+    return _client.get("$_root/$id/videos?api_key=$_key").asStream();
   }
 
-  Stream getActors(int id){
-    return _client
-        .get("$_root/$id/credits?api_key=$_key")
-        .asStream();
+  // get actors for specific movie
+  Stream getActors(int id) {
+    return _client.get("$_root/$id/credits?api_key=$_key").asStream();
   }
-
 }

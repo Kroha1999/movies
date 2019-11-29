@@ -21,7 +21,7 @@ class _MovieListState extends State<MovieList> {
   void initState() {
     super.initState();
     _scrollController = ScrollController()..addListener(_scrollListener);
-    Future.delayed(Duration.zero,(){
+    Future.delayed(Duration.zero, () {
       _bloc = MoviesProvider.of(context);
       _bloc.fetchMovies(widget.type);
     });
