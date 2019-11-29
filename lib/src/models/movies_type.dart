@@ -1,0 +1,1 @@
+enum MoviesListType { topMovies, upcomingMovies }
