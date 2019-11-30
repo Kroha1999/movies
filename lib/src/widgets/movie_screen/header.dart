@@ -31,7 +31,7 @@ Widget header(MovieItem movieData) {
             //title and genres
             Positioned(
               bottom: 13,
-              left: 80,
+              left: 85,
               child: headerText(movieData.title, movieData.genres),
             ),
           ],

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Actor {
   final String character;
   final String name;

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Widget overview(String overview, String release) {
+  var oldFormatter =  DateFormat('y-M-d'); 
+  var formatter = DateFormat('dd/MMM/yyyy');
+  String formatedDate = formatter.format(oldFormatter.parse(release));
   return Container(
     margin: EdgeInsets.all(13),
     child: Column(
@@ -16,7 +20,7 @@ Widget overview(String overview, String release) {
               child: Container(),
             ),
             Text(
-              "Release: $release",
+              "Release: $formatedDate",
               style: TextStyle(
                   fontStyle: FontStyle.italic,
                   color: Colors.grey,

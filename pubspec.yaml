@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   http: any
+  intl: ^0.16.0
   youtube_player: ^3.5.0
 
 dev_dependencies:
