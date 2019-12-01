@@ -10,7 +10,13 @@ class App extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Movies app',
-        theme: ThemeData(primarySwatch: Colors.blueGrey,fontFamily: 'OpenSans'),
+        theme: ThemeData(
+          primarySwatch: Colors.blueGrey,
+          fontFamily: 'OpenSans',
+          inputDecorationTheme: InputDecorationTheme(
+            hintStyle: TextStyle(color: Colors.white),
+          ),
+        ),
         home: MoviesTabs(),
       ),
     );

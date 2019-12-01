@@ -14,6 +14,12 @@ class MoviesBloc with MoviesMixin {
 
   // Stream of MovieItems lists
   get movies => _defineStream;
+  // Stream that provides data about trailer requires movie [id]
+  get movieTrailer => _getTrailer;
+  // Stream that provides data about actor requires movie [id]
+  get movieActors => _getActors;
+  // Stream of List<MovieItem> found by [query]
+  get searchMovies => _searchMovies;
 
   // Defines which stream to provide
   Stream<List<MovieItem>> _defineStream(MoviesListType type) {
@@ -39,11 +45,11 @@ class MoviesBloc with MoviesMixin {
       _moviesUp.sink.add(_moviesUpList);
     }
   }
-
-  // Stream that provides data about trailer requires movie [id]
-  get movieTrailer => _getTrailer;
-  // Stream that provides data about actor requires movie [id]
-  get movieActors => _getActors;
+  
+  // Stream of List<MovieItem> found by [query]
+  Stream<List<MovieItem>> _searchMovies(String query){
+    return _repository.searchMovies(query).asStream();
+  }
 
   // Stream transformation in order to get YouTube video id by movie [id] 
   Stream<String> _getTrailer(int id) {

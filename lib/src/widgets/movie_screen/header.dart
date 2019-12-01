@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import '../../models/movie_item.dart';
 
 Widget header(MovieItem movieData) {
+  Image backdrop = movieData.backdropPath != null
+      ? Image.network(
+          'http://image.tmdb.org/t/p/w342/${movieData.backdropPath}')
+      : movieData.posterPath != null
+          ? Image.network(
+              'http://image.tmdb.org/t/p/w342/${movieData.posterPath}')
+          : Image.asset('assets/images/noposter.jpg');
   return Hero(
     tag: movieData.id,
     child: Container(
       height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: Image.network(movieData.backdropPath != null
-                  ? "http://image.tmdb.org/t/p/w342/${movieData.backdropPath}"
-                  : 'http://image.tmdb.org/t/p/w342/${movieData.posterPath}')
-              .image,
+          image: backdrop.image,
           fit: BoxFit.cover,
         ),
       ),
@@ -48,7 +52,9 @@ Widget header(MovieItem movieData) {
 Widget headerPoster(String posterPath) {
   return Container(
     height: 100,
-    child: Image.network('http://image.tmdb.org/t/p/w185/$posterPath'),
+    child: posterPath != null
+        ? Image.network('http://image.tmdb.org/t/p/w185/$posterPath')
+        : Image.asset('assets/images/noposter.jpg'),
   );
 }
 

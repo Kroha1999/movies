@@ -7,20 +7,22 @@ Widget rate(double average, int total) {
       Padding(
         padding: EdgeInsets.only(left: 10),
         child: Text(
-          average.toString(),
-          style: TextStyle(fontSize: 40),
+          total == null || total == 0
+          ? "Not rated"
+          : average.toString(),
+          style: TextStyle(fontSize: 30),
         ),
       ),
       Icon(
         Icons.star,
         color: Colors.amberAccent,
-        size: 46,
+        size: 40,
       ),
       Expanded(
         child: Container(),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(0, 13, 10, 0),
+        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
         child: Text("$total voted", style: TextStyle(fontSize: 25)),
       ),
     ],

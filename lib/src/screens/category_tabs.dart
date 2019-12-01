@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/src/widgets/search_delegate.dart';
 
 import '../models/movies_type.dart';
 import '../widgets/movies_list.dart';
@@ -17,6 +18,17 @@ class MoviesTabs extends StatelessWidget {
         appBar: AppBar(
           title: Text("MoviesApp"),
           bottom: TabBar(tabs: myTabs),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: (){
+                showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),
+                );
+              },
+            ),
+          ],
         ),
         body: TabBarView(
           children: [

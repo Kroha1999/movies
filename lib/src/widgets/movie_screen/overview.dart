@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' show DateFormat;
 
 Widget overview(String overview, String release) {
-  var oldFormatter =  DateFormat('y-M-d'); 
-  var formatter = DateFormat('dd/MMM/yyyy');
-  String formatedDate = formatter.format(oldFormatter.parse(release));
+  String formatedDate = 'No date specified';
+  if (release != null && release != '') {
+    var oldFormatter = DateFormat('y-M-d');
+    var formatter = DateFormat('dd/MMM/yyyy');
+    formatedDate = formatter.format(oldFormatter.parse(release));
+  }
   return Container(
     margin: EdgeInsets.all(13),
     child: Column(

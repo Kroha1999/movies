@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import '../models/movie_item.dart';
 import '../screens/movie.dart';
 
-class MovieTile extends StatelessWidget {
+class SearchMovieTile extends StatelessWidget {
   final MovieItem movieData;
-  MovieTile(this.movieData);
+  SearchMovieTile(this.movieData);
 
   @override
   Widget build(BuildContext context) {
-    Image backdrop = movieData.backdropPath != null
-        ? Image.network(
-            'http://image.tmdb.org/t/p/w342/${movieData.backdropPath}')
-        : movieData.posterPath != null
-            ? Image.network(
-                'http://image.tmdb.org/t/p/w342/${movieData.posterPath}')
-            : Image.asset('assets/images/noposter.jpg');
+    Image poster = movieData.posterPath == null
+        ? Image.asset('assets/images/noposter.jpg')
+        : Image.network("http://image.tmdb.org/t/p/w92/${movieData.posterPath}");
     return GestureDetector(
       onTap: () {
         //Moving to next route
@@ -25,11 +21,10 @@ class MovieTile extends StatelessWidget {
       child: Hero(
         tag: movieData.id,
         child: Container(
-          height: 190,
-          // Image
+          height: 110,
+          // Background mage
           decoration: BoxDecoration(
-            color: Colors.blueGrey,
-            image: DecorationImage(image: backdrop.image, fit: BoxFit.cover),
+            color: Colors.grey,
           ),
           // Half opacity shadow
           child: Container(
@@ -38,19 +33,29 @@ class MovieTile extends StatelessWidget {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topRight,
                 stops: [0, 0.4],
-                colors: [Colors.black54, Colors.transparent],
+                colors: [Colors.black38, Colors.transparent],
               ),
             ),
             child: Material(
               type: MaterialType.transparency,
               child: Stack(
-                // Title
                 children: <Widget>[
+                  //Poster
                   Positioned(
-                    bottom: 13,
+                    bottom: 5,
                     left: 13,
                     child: Container(
-                      width: 340,
+                      height: 100,
+                      width: 65,
+                      child: poster,
+                    ),
+                  ),
+                  // Title
+                  Positioned(
+                    bottom: 13,
+                    left: 83,
+                    child: Container(
+                      width: 275,
                       child: Text(
                         movieData.title,
                         overflow: TextOverflow.ellipsis,
@@ -65,7 +70,7 @@ class MovieTile extends StatelessWidget {
                   //Rate
                   Positioned(
                     bottom: 40,
-                    left: 13,
+                    left: 83,
                     child: Row(
                       children: <Widget>[
                         Text(
