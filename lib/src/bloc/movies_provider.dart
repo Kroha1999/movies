@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'movies_bloc.dart';
+
 export 'movies_bloc.dart';
 
 class MoviesProvider extends InheritedWidget {

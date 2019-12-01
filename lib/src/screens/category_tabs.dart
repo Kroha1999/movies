@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/models/movies_type.dart';
-import 'package:movie_app/src/widgets/movies_list.dart';
+
+import '../models/movies_type.dart';
+import '../widgets/movies_list.dart';
 
 class MoviesTabs extends StatelessWidget {
   final List<Tab> myTabs = <Tab>[
@@ -17,10 +18,12 @@ class MoviesTabs extends StatelessWidget {
           title: Text("MoviesApp"),
           bottom: TabBar(tabs: myTabs),
         ),
-        body: TabBarView(children: [
-          MovieList(MoviesListType.topMovies),
-          MovieList(MoviesListType.upcomingMovies)
-        ]),
+        body: TabBarView(
+          children: [
+            MovieList(MoviesListType.topMovies),
+            MovieList(MoviesListType.upcomingMovies),
+          ],
+        ),
       ),
     );
   }

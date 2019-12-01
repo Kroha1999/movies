@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/models/actor.dart';
+
+import '../../models/actor.dart';
 
 class ActorView extends StatelessWidget {
   final Actor actor;
@@ -19,13 +20,14 @@ class ActorView extends StatelessWidget {
               color: Colors.white,
               border: Border.all(color: Colors.grey),
               image: DecorationImage(
-                  image: Image.network(
-                          'http://image.tmdb.org/t/p/w154/${actor.photoPath}')
-                      .image,
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.fitWidth),
+                image: Image.network(
+                        'http://image.tmdb.org/t/p/w154/${actor.photoPath}')
+                    .image,
+                alignment: Alignment.topCenter,
+                fit: BoxFit.fitWidth,
+              ),
             ),
-            // name and character's name from the film
+            // Name and character's name from the film
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[

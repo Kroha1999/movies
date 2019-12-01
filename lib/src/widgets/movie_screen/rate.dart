@@ -16,7 +16,9 @@ Widget rate(double average, int total) {
         color: Colors.amberAccent,
         size: 46,
       ),
-      Expanded(child: Container()),
+      Expanded(
+        child: Container(),
+      ),
       Padding(
         padding: const EdgeInsets.fromLTRB(0, 13, 10, 0),
         child: Text("$total voted", style: TextStyle(fontSize: 25)),

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client, Response;
-import 'package:movie_app/src/models/movie_item.dart';
+
+import '../models/movie_item.dart';
 
 class Repository {
   final Client _client = Client();

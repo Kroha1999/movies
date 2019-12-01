@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/bloc/movies_provider.dart';
-import 'package:movie_app/src/models/movie_item.dart';
-import 'package:movie_app/src/widgets/movie_screen/actor_list.dart';
-import 'package:movie_app/src/widgets/movie_screen/header.dart';
-import 'package:movie_app/src/widgets/movie_screen/overview.dart';
-import 'package:movie_app/src/widgets/movie_screen/rate.dart';
-import 'package:movie_app/src/widgets/movie_screen/trailer.dart';
+
+import '../bloc/movies_provider.dart';
+import '../models/movie_item.dart';
+import '../widgets/movie_screen/actor_list.dart';
+import '../widgets/movie_screen/header.dart';
+import '../widgets/movie_screen/overview.dart';
+import '../widgets/movie_screen/rate.dart';
+import '../widgets/movie_screen/trailer.dart';
 
 class MovieScreen extends StatelessWidget {
   final MovieItem movieData;

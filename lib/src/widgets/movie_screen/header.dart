@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/models/movie_item.dart';
+
+import '../../models/movie_item.dart';
 
 Widget header(MovieItem movieData) {
   return Hero(
@@ -7,19 +8,22 @@ Widget header(MovieItem movieData) {
     child: Container(
       height: 200,
       decoration: BoxDecoration(
-          image: DecorationImage(
-        image: Image.network(movieData.backdropPath != null
-                ? "http://image.tmdb.org/t/p/w342/${movieData.backdropPath}"
-                : 'http://image.tmdb.org/t/p/w342/${movieData.posterPath}')
-            .image,
-        fit: BoxFit.cover,
-      )),
+        image: DecorationImage(
+          image: Image.network(movieData.backdropPath != null
+                  ? "http://image.tmdb.org/t/p/w342/${movieData.backdropPath}"
+                  : 'http://image.tmdb.org/t/p/w342/${movieData.posterPath}')
+              .image,
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.black87, Colors.transparent],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter)),
+          gradient: LinearGradient(
+            colors: [Colors.black87, Colors.transparent],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
         child: Stack(
           children: <Widget>[
             //poster
@@ -52,35 +56,38 @@ Widget headerText(String title, List<String> genres) {
   //geners to String
   String genresStr = '';
   for (String el in genres) {
-    if (el == genres[0])
+    if (el == genres[0]) {
       genresStr += el;
-    else
+    } else {
       genresStr += ", $el";
+    }
   }
   return Material(
-      animationDuration: Duration(seconds: 5),
-      type: MaterialType.transparency,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            width: 320,
-            child: Text(
-              title,
-              overflow: TextOverflow.fade,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold),
+    animationDuration: Duration(seconds: 5),
+    type: MaterialType.transparency,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          width: 320,
+          child: Text(
+            title,
+            overflow: TextOverflow.fade,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          Container(
-            width: 320,
-            child: Text(
-              genresStr,
-              style: TextStyle(color: Colors.white),
-            ),
-          )
-        ],
-      ));
+        ),
+        Container(
+          width: 320,
+          child: Text(
+            genresStr,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    ),
+  );
 }

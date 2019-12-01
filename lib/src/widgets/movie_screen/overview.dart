@@ -35,7 +35,7 @@ Widget overview(String overview, String release) {
           overview,
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.justify,
-        )
+        ),
       ],
     ),
   );

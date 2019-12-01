@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'package:movie_app/src/bloc/movies_mixin.dart';
-import 'package:movie_app/src/models/movies_type.dart';
-import 'package:movie_app/src/repository/repository.dart';
+
+import '../bloc/movies_mixin.dart';
+import '../models/movies_type.dart';
+import '../repository/repository.dart';
 import '../models/movie_item.dart';
 
 class MoviesBloc with MoviesMixin {
@@ -11,18 +12,19 @@ class MoviesBloc with MoviesMixin {
   final _moviesTop = StreamController<List<MovieItem>>.broadcast();
   final _moviesUp = StreamController<List<MovieItem>>.broadcast();
 
-  //Stream provider of MovieItems list
+  // Stream of MovieItems lists
   get movies => _defineStream;
 
-  //function that defines which stream to provide
+  // Defines which stream to provide
   Stream<List<MovieItem>> _defineStream(MoviesListType type) {
-    if (type == MoviesListType.topMovies)
+    if (type == MoviesListType.topMovies) {
       return _moviesTop.stream;
-    else
+    } else {
       return _moviesUp.stream;
+    }
   }
 
-  //fetches new movies data
+  // Fetches new movies data depending on [type] of list
   fetchMovies(MoviesListType type) async {
     if (type == MoviesListType.topMovies) {
       final List<MovieItem> moviesPage = await _repository.fetchTopMovies();
@@ -38,16 +40,17 @@ class MoviesBloc with MoviesMixin {
     }
   }
 
-  // Streams for fetching data about trailer and actors
+  // Stream that provides data about trailer requires movie [id]
   get movieTrailer => _getTrailer;
+  // Stream that provides data about actor requires movie [id]
   get movieActors => _getActors;
 
-  // Stream transformation in order to get YouTube video id
+  // Stream transformation in order to get YouTube video id by movie [id] 
   Stream<String> _getTrailer(int id) {
     return _repository.getVideo(id).transform(toTrailer);
   }
 
-  // Stream transformation in order to get top 10 actors of curent film
+  // Stream transformation in order to get top 10 actors of curent film by movie [id]
   Stream<List> _getActors(int id) {
     return _repository.getActors(id).transform(toActors);
   }

@@ -1,1 +1,4 @@
-enum MoviesListType { topMovies, upcomingMovies }
+enum MoviesListType {
+  topMovies,
+  upcomingMovies,
+}

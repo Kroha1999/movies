@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/models/movie_item.dart';
-import 'package:movie_app/src/screens/movie.dart';
+
+import '../models/movie_item.dart';
+import '../screens/movie.dart';
 
 class MovieTile extends StatelessWidget {
   final MovieItem movieData;
@@ -10,7 +11,7 @@ class MovieTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //Moving to next royte
+        //Moving to next route
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => MovieScreen(movieData)));
       },
@@ -32,10 +33,11 @@ class MovieTile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topRight,
-                  stops: [0, 0.4],
-                  colors: [Colors.black54, Colors.transparent]),
+                begin: Alignment.bottomCenter,
+                end: Alignment.topRight,
+                stops: [0, 0.4],
+                colors: [Colors.black54, Colors.transparent],
+              ),
             ),
             child: Material(
               type: MaterialType.transparency,
@@ -46,15 +48,17 @@ class MovieTile extends StatelessWidget {
                     bottom: 13,
                     left: 13,
                     child: Container(
-                        width: 340,
-                        child: Text(
-                          movieData.title,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold),
-                        )),
+                      width: 340,
+                      child: Text(
+                        movieData.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                   //Rate
                   Positioned(
@@ -66,10 +70,14 @@ class MovieTile extends StatelessWidget {
                           '${movieData.voteAverage}',
                           style: TextStyle(color: Colors.white),
                         ),
-                        Icon(Icons.star, color: Colors.yellow[400], size: 20),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow[400],
+                          size: 20,
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

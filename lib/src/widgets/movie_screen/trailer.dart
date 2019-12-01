@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/bloc/movies_bloc.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
- 
+
+import '../../bloc/movies_bloc.dart';
+
 Widget trailer(int id, MoviesBloc bloc) {
   return Container(
     child: StreamBuilder(

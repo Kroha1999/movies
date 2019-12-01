@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/bloc/movies_provider.dart';
-import 'package:movie_app/src/models/movie_item.dart';
-import 'package:movie_app/src/models/movies_type.dart';
-import 'package:movie_app/src/widgets/movie_list_tile.dart';
+
+import '../bloc/movies_provider.dart';
+import '../models/movie_item.dart';
+import '../models/movies_type.dart';
+import 'movie_list_tile.dart';
 
 class MovieList extends StatefulWidget {
   final MoviesListType type;
@@ -16,15 +17,18 @@ class _MovieListState extends State<MovieList> {
   ScrollController _scrollController;
   MoviesBloc _bloc;
 
-  // initializing bloc and setting listener to scroll
+  // Initializing bloc and setting listener to scroll
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController()..addListener(_scrollListener);
-    Future.delayed(Duration.zero, () {
-      _bloc = MoviesProvider.of(context);
-      _bloc.fetchMovies(widget.type);
-    });
+    Future.delayed(
+      Duration.zero,
+      () {
+        _bloc = MoviesProvider.of(context);
+        _bloc.fetchMovies(widget.type);
+      },
+    );
   }
 
   @override
@@ -33,18 +37,18 @@ class _MovieListState extends State<MovieList> {
     return StreamBuilder(
       stream: _bloc.movies(widget.type),
       builder: (context, AsyncSnapshot<List<MovieItem>> snapshot) {
-        //If data was not fetched
         if (!snapshot.hasData) {
           return loaderIndicator(45.0, 45.0);
         }
-
         return ListView.builder(
           itemCount: snapshot.data.length + 1,
           controller: _scrollController,
           itemBuilder: (context, int index) {
             return index >= snapshot.data.length
                 ? loaderIndicator(25.0, 25.0)
-                : MovieTile(snapshot.data[index]);
+                : MovieTile(
+                    snapshot.data[index],
+                  );
           },
         );
       },
@@ -66,7 +70,11 @@ class _MovieListState extends State<MovieList> {
 
   Widget loaderIndicator(x, y) {
     return Center(
-        child:
-            Container(width: x, height: y, child: CircularProgressIndicator()));
+      child: Container(
+        width: x,
+        height: y,
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
