@@ -22,73 +22,71 @@ class SearchMovieTile extends StatelessWidget {
         tag: movieData.id,
         child: Container(
           height: 110,
-          // Background mage
-          decoration: BoxDecoration(
-            color: Colors.grey,
-          ),
-          // Half opacity shadow
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topRight,
-                stops: [0, 0.4],
-                colors: [Colors.black38, Colors.transparent],
-              ),
-            ),
-            child: Material(
-              type: MaterialType.transparency,
-              child: Stack(
-                children: <Widget>[
-                  //Poster
-                  Positioned(
-                    bottom: 5,
-                    left: 13,
-                    child: Container(
-                      height: 100,
-                      width: 65,
-                      child: poster,
-                    ),
+          child: Material(
+            type: MaterialType.transparency,
+            child: Stack(
+              children: <Widget>[
+                //Poster
+                Positioned(
+                  bottom: 5,
+                  left: 13,
+                  child: Container(
+                    height: 100,
+                    width: 65,
+                    child: poster,
                   ),
-                  // Title
-                  Positioned(
-                    bottom: 13,
-                    left: 83,
-                    child: Container(
-                      width: 275,
-                      child: Text(
-                        movieData.title,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                        ),
+                ),
+                // Title
+                Positioned(
+                  bottom: 47,
+                  left: 83,
+                  child: Container(
+                    width: 275,
+                    child: Text(
+                      movieData.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  //Rate
-                  Positioned(
-                    bottom: 40,
-                    left: 83,
-                    child: Row(
-                      children: <Widget>[
-                        Text(
-                          movieData.voteCount == null || movieData.voteCount == 0
-                              ? "Not rated"
-                              : '${movieData.voteAverage}',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow[400],
-                          size: 20,
-                        ),
-                      ],
+                ),
+                //Rate
+                Positioned(
+                  bottom: 73,
+                  left: 83,
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        movieData.voteCount == null || movieData.voteCount == 0
+                            ? "Not rated "
+                            : '${movieData.voteAverage} ',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 83,
+                  child: Container(
+                    width: 295,
+                    height: 40,
+                    child: Text(
+                      movieData.overview,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

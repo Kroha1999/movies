@@ -70,13 +70,13 @@ class MovieTile extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           movieData.voteCount == null || movieData.voteCount == 0
-                              ? "Not rated"
-                              : '${movieData.voteAverage}',
+                              ? "Not rated "
+                              : '${movieData.voteAverage} ',
                           style: TextStyle(color: Colors.white),
                         ),
                         Icon(
-                          Icons.star,
-                          color: Colors.yellow[400],
+                          Icons.favorite,
+                          color: Colors.red,
                           size: 20,
                         ),
                       ],

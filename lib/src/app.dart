@@ -11,10 +11,15 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Movies app',
         theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
+          primarySwatch: Colors.red,
+          primaryColor: Colors.black,
           fontFamily: 'OpenSans',
+          textTheme: TextTheme(
+            title: TextStyle(color: Colors.white),
+          ),
+          cursorColor: Colors.red,
           inputDecorationTheme: InputDecorationTheme(
-            hintStyle: TextStyle(color: Colors.white),
+            hintStyle: TextStyle(color: Colors.grey),
           ),
         ),
         home: MoviesTabs(),

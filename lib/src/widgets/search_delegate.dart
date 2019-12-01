@@ -65,8 +65,13 @@ class CustomSearchDelegate extends SearchDelegate {
           return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, int index) {
-              return SearchMovieTile(
-                snapshot.data[index],
+              return Column(
+                children: <Widget>[
+                  SearchMovieTile(
+                    snapshot.data[index],
+                  ),
+                  Divider(height: 10,)
+                ],
               );
             },
           );

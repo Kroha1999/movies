@@ -8,14 +8,14 @@ Widget rate(double average, int total) {
         padding: EdgeInsets.only(left: 10),
         child: Text(
           total == null || total == 0
-          ? "Not rated"
-          : average.toString(),
+          ? "Not rated "
+          : '$average ',
           style: TextStyle(fontSize: 30),
         ),
       ),
       Icon(
-        Icons.star,
-        color: Colors.amberAccent,
+        Icons.favorite,
+        color: Colors.red,
         size: 40,
       ),
       Expanded(
