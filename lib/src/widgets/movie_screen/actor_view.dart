@@ -25,7 +25,7 @@ class ActorView extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   fit: BoxFit.fitWidth),
             ),
-            //Name and character's name from the film
+            // name and character's name from the film
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/bloc/movies_bloc.dart';
-import 'package:youtube_player/youtube_player.dart';
-
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+ 
 Widget trailer(int id, MoviesBloc bloc) {
   return Container(
     child: StreamBuilder(
@@ -10,16 +10,18 @@ Widget trailer(int id, MoviesBloc bloc) {
         if (!snapshot.hasData) {
           return Container();
         }
+        YoutubePlayerController _controller = YoutubePlayerController(
+            initialVideoId: snapshot.data,
+            flags: YoutubePlayerFlags(
+                autoPlay: false,
+                mute: false,
+              ),
+        );
         return YoutubePlayer(
-          reactToOrientationChange: false,
-          showVideoProgressbar: false,
-          startAt: Duration.zero,
-          autoPlay: false,
-          context: context,
-          source: snapshot.data,
-          quality: YoutubeQuality.MEDIUM,
+            controller: _controller,
+            showVideoProgressIndicator: true,
         );
       },
     ),
   );
-}
+ }  

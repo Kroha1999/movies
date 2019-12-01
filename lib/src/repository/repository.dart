@@ -14,7 +14,7 @@ class Repository {
   int _topPage = 0;
   int _upcomingPage = 0;
 
-  //Fetches top movies on specific page
+  // fetches top movies on specific page
   Future<dynamic> fetchTopMovies() {
     _topPage += 1;
     return _client
@@ -22,7 +22,7 @@ class Repository {
         .then(responceHandler);
   }
 
-  //fetches upcoming movies on specific page
+  // fetches upcoming movies on specific page
   Future<dynamic> fetchUpcomingMovies() {
     _upcomingPage += 1;
     return _client

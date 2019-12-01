@@ -16,7 +16,7 @@ class _MovieListState extends State<MovieList> {
   ScrollController _scrollController;
   MoviesBloc _bloc;
 
-  //initializing bloc and setting listener to scroll
+  // initializing bloc and setting listener to scroll
   @override
   void initState() {
     super.initState();
