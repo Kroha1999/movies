@@ -5,7 +5,15 @@ import 'package:http/http.dart' show Client, Response;
 import '../models/movie_item.dart';
 
 class Repository {
-  final Client _client = Client();
+  Client _client;
+
+  Repository({Client client}) {
+    if (client == null) {
+      _client = Client();
+    } else {
+      _client = client;
+    }
+  }
 
   final String _root = 'https://api.themoviedb.org/3';
   final String _topRated = '/movie/top_rated';
@@ -41,8 +49,8 @@ class Repository {
   }
 
   // Gets trailer for specific movie by [id]
-  Stream getVideo(int id) {
-    return _client.get("$_root/movie/$id/videos?api_key=$_key").asStream();
+  Future<Response> getVideoFuture(int id) {
+    return _client.get("$_root/movie/$id/videos?api_key=$_key");
   }
 
   // Gets actors for specific movie by [id]
@@ -53,7 +61,8 @@ class Repository {
   // Looks up movies with a specific [query]
   Future<List<MovieItem>> searchMovies(String query) {
     return _client
-        .get("$_root/search/movie?api_key=$_key&query=$query&include_adult=true")
+        .get(
+            "$_root/search/movie?api_key=$_key&query=$query&include_adult=true")
         .then(responceHandler);
   }
 }
